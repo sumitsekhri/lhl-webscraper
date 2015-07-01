@@ -49,4 +49,4 @@ indentify_comments
 
 puts "Post title: #{@title[1]}"
 
-puts "Number of comments: #{@comments.length}" 
+puts "Number of comments: #{@comments.length}"
