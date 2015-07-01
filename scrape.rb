@@ -23,15 +23,18 @@ def load_doc
   @doc = Nokogiri::HTML(File.open(@html_file))
 end
 
+def indentify_title
+  @title = @doc.search('.title').map  { |title|
+    title.inner_text }
+end
+
 def indentify_comments
-  @raw_comments = @doc.search('span.comment').map do |span|
-    span.inner_text
-  end
+  @comments = @doc.search('span.comment').map { |span|
+    span.inner_text }
 end
 
 
 def make_comment
-
 end
 
 get_command_line_input
@@ -40,6 +43,10 @@ take_url_from_argv_to_string_io
 
 load_doc
 
+indentify_title
+
 indentify_comments
 
-puts @raw_comments.length
+puts "Post title: #{@title[1]}"
+
+puts "Number of comments: #{@comments.length}" 
